@@ -8,9 +8,9 @@
 (done)jezeli pionki roznego koloru najda na siebie to wraca do bazy
 (done)wybor ruchu pionka jezeli kilka na mapie
 (done)pytanie czy dodac nowego pionka jzezeli jescze mozna dodac i potem pytanie ktorego pionka uzyc
+(done ecebc4c)nie mozna odmowic postawienia pionka jezeli ma sie 0 na planszy
 
 (to be done)zrobic oznaczenie szachownicy takie jak w szachach a-f 1-8 i zrobic efekty pociachania planszy jak w szachach
-(to be done)nie mozna odmowic postawienia pionka jezeli ma sie 0 na planszy
 (to be done)zmienic na klasowosc aby uzywac socketow
 (to be done)sockety
 (to be done)jak skoncze to na dysk google
