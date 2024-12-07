@@ -266,7 +266,11 @@ def remove_duplicates_based_on_color(licznik_g,licznik_y,licznik_b,licznik_r,pie
     return pieces ,licznik_g,licznik_y,licznik_b,licznik_r
 
 def pierwsza_funkcja(ilosc_none,path_w,roll,odpowiedz, pieces6, index,licznik_g,kolor):
-    if ilosc_none != 0 and roll == 6:
+    if (ilosc_none != 0 and roll == 6): 
+        if ilosc_none == len(pieces6[kolor]):
+            pieces6[kolor][int(index)] = path_w[0]
+            licznik_g[int(index)] += roll
+            return odpowiedz, pieces6, index,licznik_g
         odpowiedz= ask_question()
         if odpowiedz == 1:
             pieces6[kolor][int(index)] = path_w[0]
@@ -324,33 +328,41 @@ def ask_question():
 
 
 def choose_piece(pieces, color):
-    result = tk.IntVar(value=-1)  # Ustaw domyślną wartość
+    root = tk.Tk()
+    root.withdraw()
+    result = tk.IntVar(value=-1, master=root)  # Set default value
 
     def on_button_click(index):
         result.set(index)
-        dialog.quit()  # Zakończ pętlę główną dialogu
+        dialog.quit()  # End the main loop of the dialog
         dialog.destroy()
 
-    # Utworzenie głównego okna Tkinter
-    dialog = tk.Tk()
+    # Create the main dialog window
+    dialog = tk.Toplevel(root)
     dialog.title("Wybór pionka")
 
-    # Etykieta z pytaniem
+    # Center the dialog on the screen
+    dialog.update_idletasks()
+    x = (dialog.winfo_screenwidth() - dialog.winfo_reqwidth()) // 2
+    y = (dialog.winfo_screenheight() - dialog.winfo_reqheight()) // 2
+    dialog.geometry(f"+{x}+{y}")
+
+    # Label with the question
     label = tk.Label(dialog, text="Którego pionka wybrać?")
     label.pack(pady=10)
 
-    # Dodanie przycisków dla każdego pionka w wybranym kolorze
+    # Add buttons for each piece in the selected color
     for index, piece in enumerate(pieces[color]):
         if piece is not None:
             button = tk.Button(dialog, text=f"{piece}", command=lambda i=index: on_button_click(i))
             button.pack(pady=5)
 
-    # Pętla główna Tkinter
-    dialog.mainloop()  # Uruchom pętlę główną dialogu
+    # Main loop of the dialog
+    dialog.mainloop()  # Run the main loop of the dialog
 
     choice = result.get()
+    root.destroy()  # Destroy the main window after finishing
     return choice
-
 
 
 def main():
