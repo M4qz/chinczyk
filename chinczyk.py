@@ -3,7 +3,6 @@ import pygame
 from random import randrange
 import tkinter as tk
 from tkinter import messagebox
-block_keys = False
 #from pionek import Pionek
 #from concurrent.futures import ThreadPoolExecutor
 
@@ -41,6 +40,7 @@ def draw_maze(screen, matrix, cell_size):
             pygame.draw.rect(screen, color, (x * cell_size, y * cell_size, cell_size, cell_size))
 
 def draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_red,numer_green,numer_yellow,matrix,screen, pieces, cell_size):
+ tablica=[]
  for color, position in pieces.items():
      for pos in position:
         if pos and pos == (5, 4):
@@ -157,7 +157,17 @@ def draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_
             pygame.draw.rect(screen, GREY, (9 * cell_size, 5 * cell_size, cell_size, cell_size))
         elif pos:
             x, y = pos
+            tablica.append((x, y))
             pygame.draw.circle(screen, color, (x * cell_size + cell_size // 2, y * cell_size + cell_size // 2), cell_size // 3)
+
+ set1=list(set(tablica))
+ for i in range(len(set1)):
+     licznik=tablica.count(set1[i])
+     if licznik>1:
+         x, y = set1[i]
+         font = pygame.font.Font(None, cell_size)  
+         text = font.render(str(licznik), True, (0, 0, 0))  
+         screen.blit(text, (x * cell_size + cell_size // 3, y * cell_size + cell_size // 5.5))
 
  return licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow
 
@@ -408,7 +418,7 @@ def main():
               (5,10),(4,10), (4,9), (4,8), (4,7),(4,6), (3,6), (2,6), (1,6), (0,6), (0,5),(1,5),(2,5),(3,5),(4,5)]
 
     pieces6 = {
-        GREEN: [None, None, None, None],   # miejsce na kordy pionkow
+        GREEN: [(5,10), (5,10), None, None],   # miejsce na kordy pionkow
         RED: [None, None, None, None],
         YELLOW: [None, None, None, None],
         BLUE: [None, None, None, None]
