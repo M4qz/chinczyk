@@ -16,7 +16,7 @@
 (to be done)jak skoncze to na dysk google
 (to be done)jezeli pionki tego samego koloru najda na siebie to stakuja sie (jest roznica miedzy 1 pionkiem a kilkoma na jednej pozycji)
 (to be done)zbugowane klikanie ruchem pionka gdy klikniemy pare klawisz ruchu to wtedy sie buguje(fix napisac wszystko w pygame)
-
+(to be done)po wyrzuceniu 6 drugi raz ruch jezeli w 2 rzucie wyrzucimy 6 to ban na ruch
 
 
 (TO BE DONE RARE EVENT) jezeli powiedzmy na 2 miejscu stoja 4 pionki i 1 z nich ukonczy i zostana na 2 miejscu 3 pionki dalej to zaliczy sie
