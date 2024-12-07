@@ -3,6 +3,7 @@ import pygame
 from random import randrange
 import tkinter as tk
 from tkinter import messagebox
+block_keys = False
 #from pionek import Pionek
 #from concurrent.futures import ThreadPoolExecutor
 
@@ -266,7 +267,7 @@ def remove_duplicates_based_on_color(licznik_g,licznik_y,licznik_b,licznik_r,pie
     return pieces ,licznik_g,licznik_y,licznik_b,licznik_r
 
 def pierwsza_funkcja(ilosc_none,path_w,roll,odpowiedz, pieces6, index,licznik_g,kolor):
-    if (ilosc_none != 0 and roll == 6): 
+    if (ilosc_none != 0 and roll == 6):
         if ilosc_none == len(pieces6[kolor]):
             pieces6[kolor][int(index)] = path_w[0]
             licznik_g[int(index)] += roll
@@ -372,7 +373,6 @@ def main():
     font = pygame.font.Font(None, 36)
 
     liczba_graczy = number_of_players(screen, font)
-
     matrix = [
         [0, 0, 0, 0, 1, 1, 3, 0, 0, 0, 0],
         [0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0],
@@ -434,68 +434,116 @@ def main():
     licznik_r=[0,0,0,0]
     licznik_y=[0,0,0,0]
     licznik_b=[0,0,0,0]
+    guzik=0
 
     while running:
-        odpowiedz=int(3)
+        odpowiedz = int(3)
+        button_processed = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w and player%liczba_graczy==0:
-                    player+=1
-                    roll = rzutkostka()
-                    kolor='Zielona'
-                    last_roll = roll
-                    display_roll_result(result_window, font, kolor, last_roll, screen, clock)
-                    ilosc_none,index,color_lenght= count_none(pieces6,GREEN)
-                    odpowiedz, pieces6, index ,licznik_g= pierwsza_funkcja(ilosc_none, path_w, roll, odpowiedz, pieces6, index,licznik_g,GREEN)
-                    if odpowiedz != 1 and ilosc_none != color_lenght:
-                            wybor = int(choose_piece(pieces6, GREEN))
-                            odpowiedz,pieces6, granicaA, numer_green ,licznik_g=druga_funkcja(wybor,ilosc_none, color_lenght, roll, path_w, odpowiedz, pieces6, granicaA, numer_green,licznik_g,GREEN)
-                            pieces6 ,licznik_g,licznik_y,licznik_b,licznik_r=remove_duplicates_based_on_color(licznik_g,licznik_y,licznik_b,licznik_r,pieces6, GREEN)
+            elif event.type == pygame.KEYDOWN and not button_processed:
+                if event.key == pygame.K_w:
+                    guzik = 1
+                    button_processed = True
+                elif event.key == pygame.K_d:
+                    guzik = 2
+                    button_processed = True
+                elif event.key == pygame.K_s:
+                    guzik = 3
+                    button_processed = True
+                elif event.key == pygame.K_a:
+                    guzik = 4
+                    button_processed = True
 
-                if event.key == pygame.K_d and player%liczba_graczy==1:
-                    player+=1
-                    roll = rzutkostka()
-                    kolor='Czerwona'
-                    last_roll = roll
-                    display_roll_result(result_window, font, kolor, last_roll, screen, clock)
-                    ilosc_none,index,color_lenght= count_none(pieces6,RED)
-                    odpowiedz, pieces6, index ,licznik_r= pierwsza_funkcja(ilosc_none, path_d, roll, odpowiedz, pieces6, index,licznik_r,RED)
-                    if odpowiedz != 1 and ilosc_none != color_lenght:
-                            wybor = int(choose_piece(pieces6, RED))
-                            odpowiedz,pieces6, granicaB, numer_red ,licznik_r= druga_funkcja(wybor,ilosc_none, color_lenght, roll, path_d, odpowiedz, pieces6, granicaB, numer_red,licznik_r,RED)
-                            pieces6 ,licznik_g,licznik_y,licznik_b,licznik_r=remove_duplicates_based_on_color(licznik_g,licznik_y,licznik_b,licznik_r,pieces6, RED)
+        if guzik == 1 and player % liczba_graczy == 0:
+            player += 1
+            roll = rzutkostka()
+            kolor = 'Zielona'
+            last_roll = roll
+            display_roll_result(result_window, font, kolor, last_roll, screen, clock)
+            ilosc_none, index, color_lenght = count_none(pieces6, GREEN)
+            odpowiedz, pieces6, index, licznik_g = pierwsza_funkcja(ilosc_none, path_w, roll, odpowiedz, pieces6, index,
+                                                                    licznik_g, GREEN)
+            if odpowiedz != 1 and ilosc_none != color_lenght:
+                wybor = int(choose_piece(pieces6, GREEN))
+                odpowiedz, pieces6, granicaA, numer_green, licznik_g = druga_funkcja(wybor, ilosc_none, color_lenght,
+                                                                                     roll, path_w, odpowiedz, pieces6,
+                                                                                     granicaA, numer_green, licznik_g,
+                                                                                     GREEN)
+                pieces6, licznik_g, licznik_y, licznik_b, licznik_r = remove_duplicates_based_on_color(licznik_g,
+                                                                                                       licznik_y,
+                                                                                                       licznik_b,
+                                                                                                       licznik_r,
+                                                                                                       pieces6, GREEN)
 
-                if event.key == pygame.K_s and player%liczba_graczy==2:
-                    player+=1
-                    roll = rzutkostka()
-                    kolor='Żółta'
-                    last_roll = roll
-                    display_roll_result(result_window, font, kolor, last_roll, screen, clock)
-                    ilosc_none,index,color_lenght= count_none(pieces6,YELLOW)
-                    odpowiedz, pieces6, index ,licznik_y= pierwsza_funkcja(ilosc_none, path_s, roll, odpowiedz, pieces6, index,licznik_y,YELLOW)
-                    if odpowiedz != 1 and ilosc_none != color_lenght:
-                            wybor = int(choose_piece(pieces6, YELLOW))
-                            odpowiedz,pieces6, granicaC, numer_yellow,licznik_y= druga_funkcja(wybor,ilosc_none, color_lenght, roll, path_s, odpowiedz, pieces6, granicaC, numer_yellow,licznik_y,YELLOW)
-                            pieces6 ,licznik_g,licznik_y,licznik_b,licznik_r=remove_duplicates_based_on_color(licznik_g,licznik_y,licznik_b,licznik_r,pieces6, YELLOW)#dodac tutaj watek
+        if guzik == 2 and player % liczba_graczy == 1:
+            player += 1
+            roll = rzutkostka()
+            kolor = 'Czerwona'
+            last_roll = roll
+            display_roll_result(result_window, font, kolor, last_roll, screen, clock)
+            ilosc_none, index, color_lenght = count_none(pieces6, RED)
+            odpowiedz, pieces6, index, licznik_r = pierwsza_funkcja(ilosc_none, path_d, roll, odpowiedz, pieces6, index,
+                                                                    licznik_r, RED)
+            if odpowiedz != 1 and ilosc_none != color_lenght:
+                wybor = int(choose_piece(pieces6, RED))
+                odpowiedz, pieces6, granicaB, numer_red, licznik_r = druga_funkcja(wybor, ilosc_none, color_lenght,
+                                                                                   roll, path_d, odpowiedz, pieces6,
+                                                                                   granicaB, numer_red, licznik_r, RED)
+                pieces6, licznik_g, licznik_y, licznik_b, licznik_r = remove_duplicates_based_on_color(licznik_g,
+                                                                                                       licznik_y,
+                                                                                                       licznik_b,
+                                                                                                       licznik_r,
+                                                                                                       pieces6, RED)
 
-                if event.key == pygame.K_a and player%liczba_graczy==3:
-                    player+=1
-                    roll = rzutkostka()
-                    kolor='Niebieska'
-                    last_roll = roll
-                    display_roll_result(result_window, font, kolor, last_roll, screen, clock)
-                    ilosc_none,index,color_lenght= count_none(pieces6,BLUE)
-                    odpowiedz, pieces6, index ,licznik_b= pierwsza_funkcja(ilosc_none, path_a, roll, odpowiedz,  pieces6, index,licznik_b,BLUE)
-                    if odpowiedz != 1 and ilosc_none != color_lenght:
-                            wybor = int(choose_piece(pieces6, BLUE))
-                            odpowiedz,pieces6, granicaD, numer_blue ,licznik_b=druga_funkcja(wybor,ilosc_none, color_lenght, roll, path_a, odpowiedz, pieces6, granicaD, numer_blue,licznik_b,BLUE)
-                            pieces6 ,licznik_g,licznik_y,licznik_b,licznik_r=remove_duplicates_based_on_color(licznik_g,licznik_y,licznik_b,licznik_r,pieces6, BLUE) #dodac tutaj watek
+        if guzik == 3 and player % liczba_graczy == 2:
+            player += 1
+            roll = rzutkostka()
+            kolor = 'Żółta'
+            last_roll = roll
+            display_roll_result(result_window, font, kolor, last_roll, screen, clock)
+            ilosc_none, index, color_lenght = count_none(pieces6, YELLOW)
+            odpowiedz, pieces6, index, licznik_y = pierwsza_funkcja(ilosc_none, path_s, roll, odpowiedz, pieces6, index,
+                                                                    licznik_y, YELLOW)
+            if odpowiedz != 1 and ilosc_none != color_lenght:
+                wybor = int(choose_piece(pieces6, YELLOW))
+                odpowiedz, pieces6, granicaC, numer_yellow, licznik_y = druga_funkcja(wybor, ilosc_none, color_lenght,
+                                                                                      roll, path_s, odpowiedz, pieces6,
+                                                                                      granicaC, numer_yellow, licznik_y,
+                                                                                      YELLOW)
+                pieces6, licznik_g, licznik_y, licznik_b, licznik_r = remove_duplicates_based_on_color(licznik_g,
+                                                                                                       licznik_y,
+                                                                                                       licznik_b,
+                                                                                                       licznik_r,
+                                                                                                       pieces6, YELLOW)
+
+        if guzik == 4 and player % liczba_graczy == 3:
+            player += 1
+            roll = rzutkostka()
+            kolor = 'Niebieska'
+            last_roll = roll
+            display_roll_result(result_window, font, kolor, last_roll, screen, clock)
+            ilosc_none, index, color_lenght = count_none(pieces6, BLUE)
+            odpowiedz, pieces6, index, licznik_b = pierwsza_funkcja(ilosc_none, path_a, roll, odpowiedz, pieces6, index,
+                                                                    licznik_b, BLUE)
+            if odpowiedz != 1 and ilosc_none != color_lenght:
+                wybor = int(choose_piece(pieces6, BLUE))
+                odpowiedz, pieces6, granicaD, numer_blue, licznik_b = druga_funkcja(wybor, ilosc_none, color_lenght,
+                                                                                    roll, path_a, odpowiedz, pieces6,
+                                                                                    granicaD, numer_blue, licznik_b,
+                                                                                    BLUE)
+                pieces6, licznik_g, licznik_y, licznik_b, licznik_r = remove_duplicates_based_on_color(licznik_g,
+                                                                                                       licznik_y,
+                                                                                                       licznik_b,
+                                                                                                       licznik_r,
+                                                                                                       pieces6, BLUE)
 
         screen.fill(BLACK)
         draw_maze(screen, matrix, CELL_SIZE)
-        licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow = draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_red,numer_green,numer_yellow,matrix,screen, pieces6, CELL_SIZE)
+        licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow = draw_pieces_new(
+            licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow, matrix,
+            screen, pieces6, CELL_SIZE)
         endgame(matrix, screen, font)
 
         if last_roll is not None:
@@ -511,6 +559,6 @@ def main():
 
     pygame.quit()
 
+
 if __name__ == "__main__":
     main()
-
