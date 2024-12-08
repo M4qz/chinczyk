@@ -20,42 +20,36 @@ GREY=(255,255,230)
 CELL_SIZE = 50
 BOARD_SIZE = 11
 
-
-
-
-
 def draw_maze(screen, matrix, cell_size):
     tablica = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
     tablica1 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
     light_grey = (211, 211, 211)
     dark_grey = (169, 169, 169)
-    WHITE = (255, 255, 255)
     LRED = (255, 192, 203)
     LGREEN = (144, 238, 144)
-    GREY = (128, 128, 128)
     LBLUE = (173, 216, 230)
     LYELLOW = (255, 252, 187)
     BLACK = (0, 0, 0)
+    BROWN = (155, 103, 60)
 
     for y in range(len(matrix)):
         for x in range(len(matrix[0])):
-            # Default tile color based on even/odd positions
-            if matrix[y][x] < 1 or matrix[y][x] > 5:
-                color = light_grey if (x + y) % 2 == 0 else dark_grey
+            # Assign colors based on matrix value
+            if matrix[y][x] == 1:
+                color = BLACK
+            elif matrix[y][x] == 2:
+                color = LRED
+            elif matrix[y][x] == 3:
+                color = LGREEN
+            elif matrix[y][x] == 44:
+                color = BROWN
+            elif matrix[y][x] == 4:
+                color = LBLUE
+            elif matrix[y][x] == 5:
+                color = LYELLOW
             else:
-                # Assign colors based on matrix value
-                if matrix[y][x] == 1:
-                    color = BLACK
-                elif matrix[y][x] == 2:
-                    color = LRED
-                elif matrix[y][x] == 3:
-                    color = LGREEN
-                elif matrix[y][x] == 44:
-                    color = GREY
-                elif matrix[y][x] == 4:
-                    color = LBLUE
-                elif matrix[y][x] == 5:
-                    color = LYELLOW
+                # Default tile color based on even/odd positions
+                color = light_grey if (x + y) % 2 == 0 else dark_grey
 
             # Draw the background rectangle
             pygame.draw.rect(screen, color, (x * cell_size, y * cell_size, cell_size, cell_size))
@@ -73,8 +67,6 @@ def draw_maze(screen, matrix, cell_size):
                 font = pygame.font.Font(None, cell_size)
                 text = font.render(tablica1[letter_index], True, (0, 0, 0))
                 screen.blit(text, (x * cell_size + cell_size // 5, y * cell_size + cell_size // 5.5))
-
-
 
 def draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_red,numer_green,numer_yellow,matrix,screen, pieces, cell_size):
  tablica=[]
@@ -202,8 +194,8 @@ def draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_
      licznik=tablica.count(set1[i])
      if licznik>1:
          x, y = set1[i]
-         font = pygame.font.Font(None, cell_size)
-         text = font.render(str(licznik), True, (0, 0, 0))
+         font = pygame.font.Font(None, cell_size)  
+         text = font.render(str(licznik), True, (0, 0, 0))  
          screen.blit(text, (x * cell_size + cell_size // 3, y * cell_size + cell_size // 5.5))
 
  return licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow
@@ -319,7 +311,7 @@ def pierwsza_funkcja(ilosc_none,path_w,roll,odpowiedz, pieces6, index,licznik_g,
             pieces6[kolor][int(index)] = path_w[0]
             licznik_g[int(index)] += roll
             return odpowiedz, pieces6, index,licznik_g
-        odpowiedz= ask_question(kolor)
+        odpowiedz= ask_question()
         if odpowiedz == 1:
             pieces6[kolor][int(index)] = path_w[0]
             licznik_g[int(index)] += roll
@@ -357,15 +349,10 @@ def display_roll_result(result_window, font, kolor, last_roll, screen, clock):
     pygame.display.flip()
     clock.tick(30)
 
-def ask_question(kolor):
+def ask_question():
     root = tk.Tk()
-    root.withdraw()
-    root.iconbitmap(
-        "red.ico" if kolor == (255, 0, 0) else
-        "blue.ico" if kolor == (0, 0, 255) else
-        "yellow.ico" if kolor == (255, 255, 0) else
-        "green.ico"
-    )
+    root.withdraw()  # Ukryj główne okno
+
     result = tk.IntVar()
     result.set(-1)  # Ustaw domyślną wartość
 
@@ -392,13 +379,6 @@ def choose_piece(pieces, color):
 
     # Create the main dialog window
     dialog = tk.Toplevel(root)
-    icon_path = (
-        "red.ico" if color == (255, 0, 0) else
-        "blue.ico" if color == (0, 0, 255) else
-        "yellow.ico" if color == (255, 255, 0) else
-        "green.ico"
-    )
-    dialog.iconbitmap(icon_path)
     dialog.title("Wybór pionka")
 
     # Center the dialog on the screen
@@ -411,6 +391,7 @@ def choose_piece(pieces, color):
     label = tk.Label(dialog, text="Którego pionka wybrać?")
     label.pack(pady=10)
 
+    # Add buttons for each piece in the selected color
     for index, piece in enumerate(pieces[color]):
         if piece is not None:
             # Przykładowa para koordynatów (x, y)
@@ -440,7 +421,7 @@ def main():
     matrix = [
         [0, 0, 0, 0, 1, 1, 3, 0, 0, 0, 0, 27],
         [0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0, 26],
-        [0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0, 25],      #plansza
+        [0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0, 25],  # plansza
         [0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0, 24],
         [4, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 23],
         [1, 4, 4, 4, 4, 1, 2, 2, 2, 2, 1, 22],
@@ -473,7 +454,7 @@ def main():
               (5,10),(4,10), (4,9), (4,8), (4,7),(4,6), (3,6), (2,6), (1,6), (0,6), (0,5),(1,5),(2,5),(3,5),(4,5)]
 
     pieces6 = {
-        GREEN: [None, None, None, None],   # miejsce na kordy pionkow
+        GREEN: [None, None, None, None], # miejsce na kordy pionkow
         RED: [None, None, None, None],
         YELLOW: [None, None, None, None],
         BLUE: [None, None, None, None]
@@ -618,8 +599,6 @@ def main():
             roll_text2 = font.render(f'kostka : {last_roll}', True, BLACK)
             result_window.blit(roll_text1, (10, 10))
             result_window.blit(roll_text2, (10, 30))
-
-            # Rysowanie na ekranie głównym
             screen.blit(result_window, (10, 10))
 
         pygame.display.flip()
