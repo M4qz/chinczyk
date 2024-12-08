@@ -204,12 +204,14 @@ def draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_
 def rzutkostka():
     return randrange(1, 7)
 
-def move_piece(pos, roll, path,granica):
+def move_piece(pos, roll, path,granica,pieces,kolor):
     if pos is None:
         return path[0]
     idx = path.index(pos)
     new_idx = (idx + roll) % len(path)
     if granica==True:
+        return pos
+    if path[new_idx] in path[-4:] and path[new_idx] in pieces[kolor]:
         return pos
     return path[new_idx]
 
@@ -330,7 +332,7 @@ def druga_funkcja(wybor,ilosc_none,color_lenght,roll,path_w,odpowiedz,pieces6, g
             licznik_g[int(wybor)] += roll
         else:
             granicaA = True
-        pieces6[kolor][wybor] = move_piece(pieces6[kolor][wybor], roll, path_w, granicaA)
+        pieces6[kolor][wybor] = move_piece(pieces6[kolor][wybor], roll, path_w, granicaA,pieces6,kolor)
         granicaA = False
         return odpowiedz, pieces6, granicaA, numer_green,licznik_g
 
