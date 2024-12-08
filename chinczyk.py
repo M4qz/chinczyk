@@ -192,8 +192,8 @@ def draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_
      licznik=tablica.count(set1[i])
      if licznik>1:
          x, y = set1[i]
-         font = pygame.font.Font(None, cell_size)  
-         text = font.render(str(licznik), True, (0, 0, 0))  
+         font = pygame.font.Font(None, cell_size)
+         text = font.render(str(licznik), True, (0, 0, 0))
          screen.blit(text, (x * cell_size + cell_size // 3, y * cell_size + cell_size // 5.5))
 
  return licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow
@@ -201,6 +201,7 @@ def draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_
 
 def rzutkostka():
     return randrange(1, 7)
+
 
 def move_piece(pos, roll, path,granica,pieces,kolor):
     if pos is None:
@@ -504,7 +505,7 @@ def main():
               (5,10),(4,10), (4,9), (4,8), (4,7),(4,6), (3,6), (2,6), (1,6), (0,6), (0,5),(1,5),(2,5),(3,5),(4,5)]
 
     pieces6 = {
-        GREEN:[None, None, None, None],  # Adjusted positions # miejsce na kordy pionkow
+        GREEN:[None, None, None, None], # Adjusted positions # miejsce na kordy pionkow
         RED: [None, None, None, None],
         YELLOW: [None, None, None, None],
         BLUE: [None, None, None, None]
@@ -531,6 +532,7 @@ def main():
     licznik_y=[0,0,0,0]
     licznik_b=[0,0,0,0]
     guzik=0
+    ileszostek=0
 
     while running:
         odpowiedz = int(3)
@@ -553,8 +555,16 @@ def main():
                     button_processed = True
 
         if guzik == 1 and player % liczba_graczy == 0:
-            player += 1
             roll = rzutkostka()
+            if roll == 6 and liczba_graczy != 3 and ileszostek < 1:
+                player += 4
+                ileszostek += 1
+            elif liczba_graczy == 3 and roll == 6 and ileszostek < 1:
+                player += 3
+                ileszostek += 1
+            else:
+                player += 1
+                ileszostek = 0
             kolor = 'Zielona'
             last_roll = roll
             display_roll_result(result_window, font, kolor, last_roll, screen, clock)
@@ -574,8 +584,16 @@ def main():
                                                                                                        pieces6, GREEN)
 
         if guzik == 2 and player % liczba_graczy == 1:
-            player += 1
             roll = rzutkostka()
+            if roll == 6 and liczba_graczy != 3 and ileszostek < 1:
+                player += 4
+                ileszostek += 1
+            elif liczba_graczy == 3 and roll == 6 and ileszostek < 1:
+                player += 3
+                ileszostek += 1
+            else:
+                player += 1
+                ileszostek = 0
             kolor = 'Czerwona'
             last_roll = roll
             display_roll_result(result_window, font, kolor, last_roll, screen, clock)
@@ -594,8 +612,16 @@ def main():
                                                                                                        pieces6, RED)
 
         if guzik == 3 and player % liczba_graczy == 2:
-            player += 1
             roll = rzutkostka()
+            if roll == 6 and liczba_graczy != 3 and ileszostek < 1:
+                player += 4
+                ileszostek += 1
+            elif liczba_graczy == 3 and roll == 6 and ileszostek < 1:
+                player += 3
+                ileszostek += 1
+            else:
+                player += 1
+                ileszostek = 0
             kolor = 'Żółta'
             last_roll = roll
             display_roll_result(result_window, font, kolor, last_roll, screen, clock)
@@ -615,8 +641,16 @@ def main():
                                                                                                        pieces6, YELLOW)
 
         if guzik == 4 and player % liczba_graczy == 3:
-            player += 1
             roll = rzutkostka()
+            if roll == 6 and liczba_graczy != 3  and ileszostek<1:
+                player += 4
+                ileszostek+=1
+            elif liczba_graczy == 3 and roll == 6 and ileszostek<1:
+                player += 3
+                ileszostek += 1
+            else:
+                player += 1
+                ileszostek = 0
             kolor = 'Niebieska'
             last_roll = roll
             display_roll_result(result_window, font, kolor, last_roll, screen, clock)
