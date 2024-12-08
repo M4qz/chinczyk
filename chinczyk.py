@@ -203,6 +203,7 @@ def rzutkostka():
     return randrange(1, 7)
 
 
+
 def move_piece(pos, roll, path,granica,pieces,kolor):
     if pos is None:
         return path[0]
@@ -275,7 +276,7 @@ def number_of_players(screen, font):
         # Buttons with numbers and descriptions
         button_texts = [
             ('2 (Zielony i Czerwony)', button_2_rect),
-            ('3 (Zielony, Czerwony, Niebieski)', button_3_rect),
+            ('3 (Zielony, Czerwony, Żółty)', button_3_rect),
             ('4 (Wszystkie kolory)', button_4_rect)
         ]
 
@@ -671,7 +672,8 @@ def main():
 
         screen.fill(BLACK)
         draw_maze(screen, matrix, CELL_SIZE)
-        licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow = draw_pieces_new(
+        for i in range (4):
+         licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow = draw_pieces_new(
             licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow, matrix,
             screen, pieces6, CELL_SIZE)
         endgame(matrix, screen, font)
