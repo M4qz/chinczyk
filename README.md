@@ -10,10 +10,10 @@
 - **(done)** Jeżeli pionki różnego koloru najdą na siebie, to wracają do bazy.
 - **(done)** Wybór ruchu pionka, jeżeli jest ich kilka na mapie.
 - **(done)** Pytanie, czy dodać nowego pionka, jeżeli jeszcze można, oraz pytanie, którego pionka użyć.
-- **(done)** Nie można odmówić postawienia pionka, jeżeli ma się 0 na planszy.
-- **(done)** Zbugowane klikanie ruchem pionka - jeśli klikniemy kilka klawiszy ruchu, to buguje się (zmieniona kolejność w kodzie `for event in pygame.event.get()`).
-- **(done)** Jeżeli pionki tego samego koloru najdą na siebie, to stakują się (jest różnica między 1 pionkiem a kilkoma na jednej pozycji).
-- **(done)** Zrobienie oznaczenia szachownicy takie jak w szachach (A-F 1-8) i dodanie efektów pociachania planszy jak w szachach.
+- **(done ecebc4c)** Nie można odmówić postawienia pionka, jeżeli ma się 0 na planszy.
+- **(done 33e79c5)** Zbugowane klikanie ruchem pionka - jeśli klikniemy kilka klawiszy ruchu, to buguje się (zmieniona kolejność w kodzie `for event in pygame.event.get()`).
+- **(done eeee7be)** Jeżeli pionki tego samego koloru najdą na siebie, to stakują się (jest różnica między 1 pionkiem a kilkoma na jednej pozycji).
+- **(done 51fa50f)** Zrobienie oznaczenia szachownicy takie jak w szachach (A-F 1-8) i dodanie efektów pociachania planszy jak w szachach.
 
 ### Do zrobienia
 
