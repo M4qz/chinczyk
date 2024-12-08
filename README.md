@@ -16,7 +16,7 @@
 - **(done 51fa50f)** Zrobienie oznaczenia szachownicy takie jak w szachach (A-F 1-8) i dodanie efektów pociachania planszy jak w szachach.
 - **(done - rare event 697e63b)** Jeżeli na 2. miejscu stoją 4 pionki, i jeden z nich ukończy, a na 2. miejscu pozostaną 3 pionki, to zostaną one usunięte, ale nie będzie 
   można postawić nowych pionków. Kolor ten nigdy nie skończy gry. (Obejrzeć gameplay)
-  - **(done 3783cc5)** dziwne spalnienie sie w zlych miejscach pionkow (nie dawanie kolorow dla tkineter **(XDDDDDDDDDDDDDDDDDDDDDDDDDDD)**)
+- **(done 3783cc5)** dziwne spalnienie sie w zlych miejscach pionkow (nie dawanie kolorow dla tkineter **(XDDDDDDDDDDDDDDDDDDDDDDDDDDD)**)
   
 ### Do zrobienia
 
