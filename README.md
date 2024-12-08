@@ -17,7 +17,7 @@
 
 ### Do zrobienia
 
-- **(to be done)** Wyjasnienie sterowania przy wyborze ilosci graczy ze zawsze dobor koloru staly dla klawisza czyli wsad gdzie 2 graczy to zielony i czerwony 3 graczy to zielony czerwony zolty itp
+- **(to be done)** Przy wyborze ilosci graczy wyjasnic co to znaczy ze cyfra 2 jest na pionku(2 stackowane pionki) oraz sterowanie  graczy ze zawsze dobor koloru staly dla klawisza czyli wsad gdzie 2 graczy to zielony i czerwony 3 graczy to zielony czerwony zolty itp
 - **(to be done)** Po wyrzuceniu 6 drugi raz, jeśli wyrzucimy 6 w drugim rzucie, to ban na ruch.
 - **(to be done - rare event)** Jeżeli na 2. miejscu stoją 4 pionki, i jeden z nich ukończy, a na 2. miejscu pozostaną 3 pionki, to zostaną one usunięte, ale nie będzie można postawić nowych pionków. Kolor ten nigdy nie skończy gry. (Obejrzeć gameplay)
   
