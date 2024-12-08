@@ -298,9 +298,9 @@ def number_of_players(screen, font):
         legend_texts = [
             "Sterowanie:",
             "W: Zielony",
-            "A: Czerwony",
+            "D: Czerwony",
             "S: Żółty",
-            "D: Niebieski"]
+            "A: Niebieski"]
 
         y_offset = 150
         for text in legend_texts:
