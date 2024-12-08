@@ -233,11 +233,7 @@ def endgame(matrix, screen, font):
         pygame.display.flip()
         pygame.time.wait(3000)  # Display the message for 3 seconds
         pygame.quit()
-
-
-import pygame
-import sys
-
+        sys.exit()
 
 def number_of_players(screen, font):
     # Colors
@@ -476,7 +472,7 @@ def main():
         [0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0, 25],  # plansza
         [0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0, 24],
         [4, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 23],
-        [1, 4, 4, 4, 4, 1, 2, 2, 2, 2, 1, 22],
+        [1, 44, 44, 44, 44, 1, 2, 2, 2, 2, 1, 22],
         [1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 2, 21],
         [0, 0, 0, 0, 1, 5, 1, 0, 0, 0, 0, 20],
         [0, 0, 0, 0, 1, 5, 1, 0, 0, 0, 0, 19],
@@ -691,6 +687,7 @@ def main():
         clock.tick(30)
 
     pygame.quit()
+    sys.exit()
 
 
 if __name__ == "__main__":
