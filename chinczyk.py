@@ -3,8 +3,6 @@ import pygame
 from random import randrange
 import tkinter as tk
 from tkinter import messagebox
-#from pionek import Pionek
-#from concurrent.futures import ThreadPoolExecutor
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -234,16 +232,25 @@ def endgame(matrix, screen, font):
         pygame.time.wait(3000)  # Display the message for 3 seconds
         pygame.quit()
 
-def number_of_players(screen, font):
-    # Kolory
-    button_color = (0, 0, 255)
-    text_color = (255, 255, 255)
-    hover_color = (255, 0, 0)
 
-    # Pozycje przycisków
-    button_2_rect = pygame.Rect(50, 150, 200, 50)
-    button_3_rect = pygame.Rect(50, 250, 200, 50)
-    button_4_rect = pygame.Rect(50, 350, 200, 50)
+import pygame
+import sys
+
+
+def number_of_players(screen, font):
+    # Colors
+    button_color = (0, 0, 255)  # Blue button
+    text_color = (255, 255, 255)  # White text color
+    hover_color = (255, 0, 0)  # Red hover color
+
+    # Button positions
+    button_2_rect = pygame.Rect(50, 150, 300, 60)
+    button_3_rect = pygame.Rect(50, 250, 300, 60)
+    button_4_rect = pygame.Rect(50, 350, 300, 60)
+
+    # New, smaller fonts for buttons and legend
+    button_font = pygame.font.Font(None, 22)  # Smaller font for buttons
+    legend_font = pygame.font.Font(None, 35)  # Smaller font for legend
 
     while True:
         for event in pygame.event.get():
@@ -258,21 +265,62 @@ def number_of_players(screen, font):
                 if button_4_rect.collidepoint(event.pos):
                     return 4
 
-        screen.fill((0, 0, 0))  # Czyszczenie ekranu
+        screen.fill((0, 0, 0))  # Clear the screen
         prompt_text = font.render('Podaj liczbe graczy (2-4 graczy):', True, text_color)
         screen.blit(prompt_text, (50, 50))
 
         mouse_pos = pygame.mouse.get_pos()
 
-        for rect, number in [(button_2_rect, '2'), (button_3_rect, '3'), (button_4_rect, '4')]:
+        # Buttons with numbers and descriptions
+        button_texts = [
+            ('2 (Zielony i Czerwony)', button_2_rect),
+            ('3 (Zielony, Czerwony, Niebieski)', button_3_rect),
+            ('4 (Wszystkie kolory)', button_4_rect)
+        ]
+
+        for text, rect in button_texts:
             if rect.collidepoint(mouse_pos):
                 pygame.draw.rect(screen, hover_color, rect)
             else:
                 pygame.draw.rect(screen, button_color, rect)
-            button_text = font.render(number, True, text_color)
-            screen.blit(button_text, (rect.x + 75, rect.y + 10))
+
+            # Render the button text with smaller font
+            button_text = button_font.render(text, True, text_color)
+
+            # Position the text to be centered on the button
+            text_rect = button_text.get_rect(center=rect.center)
+            screen.blit(button_text, text_rect)
+
+        # Draw the legend
+        opis = [
+            "Legenda:",
+            "2  oznacza 2 pionki na jednym polu",
+            "3  oznacza 3 pionki na jednym polu",
+            "4  oznacza 4 pionki na jednym polu", ]
+        legend_texts = [
+            "Sterowanie:",
+            "W: Zielony",
+            "A: Czerwony",
+            "S: Żółty",
+            "D: Niebieski"]
+
+        y_offset = 150
+        for text in legend_texts:
+            legend_surface = legend_font.render(text, True, (255, 255, 255))
+            screen.blit(legend_surface, (400, y_offset))  # Position legend text
+            y_offset += 30
+        y_offset = 450
+        i=0
+        for text in opis:
+            if i>0:
+             pygame.draw.circle(screen, (255,255,255), (107,y_offset+10),14,1)
+            legend_surface = legend_font.render(text, True, (255, 255, 255))
+            screen.blit(legend_surface, (100, y_offset))  # Position legend text
+            y_offset += 40
+            i+=1
 
         pygame.display.flip()
+
 
 def count_none(pieces, color):
     # Sprawdza, czy kolor istnieje w słowniku
@@ -456,7 +504,7 @@ def main():
               (5,10),(4,10), (4,9), (4,8), (4,7),(4,6), (3,6), (2,6), (1,6), (0,6), (0,5),(1,5),(2,5),(3,5),(4,5)]
 
     pieces6 = {
-        GREEN: [None, None, None, None], # miejsce na kordy pionkow
+        GREEN:[None, None, None, None],  # Adjusted positions # miejsce na kordy pionkow
         RED: [None, None, None, None],
         YELLOW: [None, None, None, None],
         BLUE: [None, None, None, None]
@@ -478,7 +526,7 @@ def main():
     granicaB=False
     granicaC=False
     granicaD=False
-    licznik_g=[0,0,0,0] #tablica licznikow pionkow
+    licznik_g = [0,0,0,0] #tablica licznikow pionkow
     licznik_r=[0,0,0,0]
     licznik_y=[0,0,0,0]
     licznik_b=[0,0,0,0]
