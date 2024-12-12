@@ -20,7 +20,7 @@
 - **(done ee14adf)** Przy wyborze ilosci graczy wyjasnic co to znaczy ze cyfra 2 jest na pionku(2 stackowane pionki) oraz sterowanie  graczy ze zawsze dobor koloru staly dla 
   klawisza czyli wsad gdzie 2 graczy to zielony i czerwony 3 graczy to zielony czerwony zolty itp
 - **(done 698b57a)** Po wyrzuceniu 6 drugi raz, jeśli wyrzucimy 6 w drugim rzucie, to ban na ruch.
-- **(done 55de3de)** jezeli ktos wyrzuci 6 i nie mozna zrobic ruchu to nie powinno byc sytuacji ze ma sie kolejny ruch(sprawdzic czy po ruchu smienil sie sklad pieces6)
+- **(done 55de3de)** jezeli ktos wyrzuci 6 i nie mozna zrobic ruchu to nie powinno byc sytuacji ze ma sie kolejny ruch(sprawdzic czy po ruchu zmienil sie sklad pieces6)
   
 ### Możliwe do wykonania
 
