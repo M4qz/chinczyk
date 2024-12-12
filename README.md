@@ -24,6 +24,7 @@
   
 ### Możliwe do wykonania
 
+- **(may be done)** zablokowac mozliwosc wyboru pionka w tkinter ktory odgornie wiadomo ze nie zrobil by ruchu w momencie gdy mamy inne poprawne pionki do wyboru
 - **(may be done)** Zmiana na klasowość, aby używać socketów.
 - **(may be done)** Dodanie socketów do gry.
 - **(may be done)** Po zakończeniu, umieszczenie na Dysku Google.
