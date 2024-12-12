@@ -23,8 +23,10 @@
  
 ### Możliwe do wykonania
 
+- **(may be done)** jezeli ktos wyrzuci 6 i nie mozna zrobic ruchu to nie powinno byc sytuacji ze ma sie kolejny ruch(dac ileszostek na 3 w miejscach gdzie opisane sa sytuacje gdzie nie powinno byc ruchu)
 - **(may be done)** Zmiana na klasowość, aby używać socketów.
 - **(may be done)** Dodanie socketów do gry.
 - **(may be done)** Po zakończeniu, umieszczenie na Dysku Google.
+  
 
 
