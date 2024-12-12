@@ -23,8 +23,7 @@
  
 ### Możliwe do wykonania
 
-- **(may be done)** jezeli ktos wyrzuci 6 i nie mozna zrobic ruchu to nie powinno byc sytuacji ze ma sie kolejny ruch(dac ileszostek na 3 w miejscach gdzie opisane sa sytuacje gdzie nie powinno byc ruchu)
-- **(may be done)** w sytuacji gdzie nie ma pionkow na planszy dla koloru wylacznie zielonego czyli nie zaleznie od romiaru pieces6['green'] wylacznie gdy jest w niej iles none to zamiast w 1 ruchu byc na przyklad 6,6,4 to bedzie tylko 6,6,5. Wylacznie to sie dzieje dla zielonego pionka
+- **(may be done test6 clue)** jezeli ktos wyrzuci 6 i nie mozna zrobic ruchu to nie powinno byc sytuacji ze ma sie kolejny ruch(dac ileszostek na 3 w miejscach gdzie opisane sa sytuacje gdzie nie powinno byc ruchu)
 - **(may be done)** Zmiana na klasowość, aby używać socketów.
 - **(may be done)** Dodanie socketów do gry.
 - **(may be done)** Po zakończeniu, umieszczenie na Dysku Google.
