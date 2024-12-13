@@ -21,7 +21,7 @@
   klawisza czyli wsad gdzie 2 graczy to zielony i czerwony 3 graczy to zielony czerwony zolty itp
 - **(done 698b57a)** Po wyrzuceniu 6 drugi raz, jeśli wyrzucimy 6 w drugim rzucie, to ban na ruch.
 - **(done 55de3de)** jezeli ktos wyrzuci 6 i nie mozna zrobic ruchu to nie powinno byc sytuacji ze ma sie kolejny ruch(sprawdzic czy po ruchu zmienil sie sklad pieces6)
-- **(done 998b38f)** jezeli ktos 3 razy wyrzucil 6 to pomimo ze za 3 razem nic sie niedzieje to buguje sie wtedy kolejnosc pionkow
+- **(done 998b38f)** jezeli ktos 3 razy wyrzucil 6 i zrobil nielegalny ruch(wyjscie poza mape albo stackowanie w 4 ostatnich pozycjach sciezki) to pomimo ze za 3 razem nic sie niedzieje to buguje sie wtedy kolejnosc pionkow
   
 ### Możliwe do wykonania
 
