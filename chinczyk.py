@@ -193,13 +193,8 @@ def draw_pieces_new(licznik_g, licznik_r, licznik_y, licznik_b,numer_blue,numer_
 
  return licznik_g, licznik_r, licznik_y, licznik_b, numer_blue, numer_red, numer_green, numer_yellow
 
-
 def rzutkostka():
     return randrange(1, 7)
-
-
-
-
 
 def move_piece(pos, roll, path,granica,pieces,kolor):
     if pos is None:
@@ -514,8 +509,7 @@ def main():
     licznik_b=[0,0,0,0]
     guzik=0
     ileszostek=0
-    roll=0
-    starylicznik=[0,0,0,0]
+    trzecia_szostka=True
 
 
     while running:
@@ -539,6 +533,7 @@ def main():
                     button_processed = True
 
         if guzik == 1 and player % liczba_graczy == 0:
+            trzecia_szostka = True
             roll = rzutkostka()
             pieces6_copy = copy.deepcopy(pieces6)
             if roll == 6 and liczba_graczy != 3 and ileszostek < 1:
@@ -550,6 +545,8 @@ def main():
             else:
                 player += 1
                 ileszostek = 0
+                trzecia_szostka=False
+            print(ileszostek)
             kolor = 'Zielona'
             last_roll = roll
             display_roll_result(result_window, font, kolor, last_roll, screen, clock)
@@ -567,7 +564,7 @@ def main():
                                                                                                        licznik_b,
                                                                                                        licznik_r,
                                                                                                        pieces6, GREEN)
-            if (pieces6_copy == pieces6) and roll == 6:
+            if (pieces6_copy == pieces6) and roll == 6 and trzecia_szostka:
                 player += 1
                 ileszostek = 0
 
@@ -575,6 +572,7 @@ def main():
 
         if guzik == 2 and player % liczba_graczy == 1:
             roll = rzutkostka()
+            trzecia_szostka = True
             pieces6_copy = copy.deepcopy(pieces6)
             if roll == 6 and liczba_graczy != 3 and ileszostek < 1:
                 player += 4
@@ -585,6 +583,7 @@ def main():
             else:
                 player += 1
                 ileszostek = 0
+                trzecia_szostka = False
             kolor = 'Czerwona'
             last_roll = roll
             display_roll_result(result_window, font, kolor, last_roll, screen, clock)
@@ -601,12 +600,14 @@ def main():
                                                                                                        licznik_b,
                                                                                                        licznik_r,
                                                                                                        pieces6, RED)
-            if (starylicznik == licznik_r) and roll == 6:
+            if (pieces6_copy == pieces6) and roll == 6 and trzecia_szostka:
                 player += 1
                 ileszostek = 0
 
 
+
         if guzik == 3 and player % liczba_graczy == 2:
+            trzecia_szostka = True
             roll=rzutkostka()
             pieces6_copy = copy.deepcopy(pieces6)
             if roll == 6 and liczba_graczy != 3 and ileszostek < 1:
@@ -618,6 +619,7 @@ def main():
             else:
                 player += 1
                 ileszostek = 0
+                trzecia_szostka = False
             kolor = 'Żółta'
             last_roll = roll
             display_roll_result(result_window, font, kolor, last_roll, screen, clock)
@@ -635,13 +637,14 @@ def main():
                                                                                                        licznik_b,
                                                                                                        licznik_r,
                                                                                                        pieces6, YELLOW)
-            if (pieces6_copy==pieces6) and roll == 6:
+            if (pieces6_copy == pieces6) and roll == 6 and trzecia_szostka:
                 player += 1
                 ileszostek = 0
 
 
         if guzik == 4 and player % liczba_graczy == 3:
             roll = rzutkostka()
+            trzecia_szostka = True
             pieces6_copy = copy.deepcopy(pieces6)
             if roll == 6 and liczba_graczy != 3  and ileszostek<1:
                 player += 4
@@ -652,6 +655,8 @@ def main():
             else:
                 player += 1
                 ileszostek = 0
+                trzecia_szostka = False
+
             kolor = 'Niebieska'
             last_roll = roll
             display_roll_result(result_window, font, kolor, last_roll, screen, clock)
@@ -669,7 +674,7 @@ def main():
                                                                                                        licznik_b,
                                                                                                        licznik_r,
                                                                                                        pieces6, BLUE)
-            if (pieces6_copy == pieces6) and roll == 6:
+            if (pieces6_copy == pieces6) and roll == 6 and trzecia_szostka:
                 player += 1
                 ileszostek = 0
 
