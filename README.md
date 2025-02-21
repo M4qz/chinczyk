@@ -1,3 +1,31 @@
+# Instrukcja Użytkowania Gry
+
+Aby program działał poprawnie, upewnij się, że masz zainstalowane następujące biblioteki Pythona:
+
+-   **pygame**
+-   **tkinter**
+
+## Uruchomienie
+
+Po uruchomieniu programu (chinczyk.py), na ekranie startowym:
+
+1.  **Wybierz liczbę graczy:** Użyj niebieskich przycisków, aby wybrać liczbę graczy (2-4). Każdy przycisk odpowiada kolorom pionków, którymi będziesz sterować podczas gry.
+2.  **Zapoznaj się z legendą i sterowaniem:** Na ekranie startowym znajduje się legenda objaśniająca zasady gry oraz informacje o sterowaniu pionkami.
+
+## Sterowanie w Grze
+
+*   **Ruch pionkami:** Po kliknięciu klawisza odpowiadającego Twojemu kolorowi pionków, program automatycznie wykona możliwe ruchy za Ciebie, jeśli masz dodatkowy rzut (wyrzucenie szóstki).
+*   **Wybór pionków:** Twoim zadaniem jest wybranie, którymi pionkami chcesz się poruszyć.
+*   **Dodatkowe rzuty:**
+    *   Wyrzucenie szóstki daje dodatkowy rzut.
+    *   Wyrzucenie trzech szóstek z rzędu powoduje anulowanie ostatniego ruchu.
+
+## Ważna Uwaga Dotycząca Ruchów
+
+Gra nie blokuje możliwości wykonania "nielegalnych" ruchów. Oznacza to, że jeśli spróbujesz wykonać ruch, który jest niemożliwy (np. brakuje Ci 3 oczka do mety dla pionka nr 1, a na kostce masz 5), a masz inne, poprawne ruchy do wykonania, to pionek się nie ruszy i nastąpi tura następnego gracza.
+
+**Podsumowując:** Gra nie uniemożliwi Ci wykonania nieprawidłowego ruchu, jeśli masz inne pionki, którymi możesz się ruszyć zgodnie z zasadami. Musisz samodzielnie zadbać o wybór właściwego pionka do ruchu.
+
 ### Wykonane
 
 - **(done)** Dodanie zmiany gracza dopiero po ruchu, a nie w dowolnym momencie.
