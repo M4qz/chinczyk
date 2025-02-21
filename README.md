@@ -26,6 +26,8 @@ Gra nie blokuje możliwości wykonania "nielegalnych" ruchów. Oznacza to, że j
 
 **Podsumowując:** Gra nie uniemożliwi Ci wykonania nieprawidłowego ruchu, jeśli masz inne pionki, którymi możesz się ruszyć zgodnie z zasadami. Musisz samodzielnie zadbać o wybór właściwego pionka do ruchu.
 
+***
+
 ### Wykonane
 
 - **(done)** Dodanie zmiany gracza dopiero po ruchu, a nie w dowolnym momencie.
