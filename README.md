@@ -16,7 +16,7 @@
 - **(done 51fa50f)** Zrobienie oznaczenia szachownicy takie jak w szachach (A-F 1-8) i dodanie efektów pociachania planszy jak w szachach.
 - **(done - rare event 697e63b)** Jeżeli na 2. miejscu stoją 4 pionki, i jeden z nich ukończy, a na 2. miejscu pozostaną 3 pionki, to zostaną one usunięte, ale nie będzie 
   można postawić nowych pionków. Kolor ten nigdy nie skończy gry. (Obejrzeć gameplay)
-- **(done 3783cc5)** dziwne spalnienie sie w zlych miejscach pionkow (nie dawanie kolorow dla tkineter **(XDDDDDDDDDDDDDDDDDDDDDDDDDDD)**)
+- **(done 3783cc5)** dziwne stawianie sie w zlych miejscach pionkow (nie dawanie kolorow dla tkineter 
 - **(done ee14adf)** Przy wyborze ilosci graczy wyjasnic co to znaczy ze cyfra 2 jest na pionku(2 stackowane pionki) oraz sterowanie  graczy ze zawsze dobor koloru staly dla 
   klawisza czyli wsad gdzie 2 graczy to zielony i czerwony 3 graczy to zielony czerwony zolty itp
 - **(done 698b57a)** Po wyrzuceniu 6 drugi raz, jeśli wyrzucimy 6 w drugim rzucie, to ban na ruch.
